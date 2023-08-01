@@ -10,12 +10,13 @@ import React, { useState } from "react";
 import Posts from "../Posts/Posts";
 import SearchBar from "../SearchBar/SearchBar";
 // [x] Import the dummyData
-import DummyData from "/frontend/data/dummy-data";
+import data from "/frontend/data/dummy-data";
 
 const App = () => {
-  // [ ] Create a state called `posts` to hold the array of post objects, **initializing to dummyData**.
+  // [x] Create a state called `posts` to hold the array of post objects, **initializing to dummyData**.
   // - This state is the source of truth for the data inside the app. You won't be needing dummyData anymore.
   // - To make the search bar work (which is stretch) we'd need another state to hold the search term.
+  const [posts, setPosts] = useState(data);
 
   const likePost = (postId) => {
     /*
@@ -29,12 +30,16 @@ const App = () => {
         - if the `id` of the post matches `postId`, return a new post object with the desired values (use the spread operator).
         - otherwise just return the post object unchanged.
      */
+
+    console.log("liking post");
   };
 
   return (
     <div className="App">
-      {/* [ ] Add SearchBar and Posts here to render them */}
-      {/* [ ] Check the implementation of each component, to see what props they require, if any! */}
+      {/* [x] Add SearchBar and Posts here to render them */}
+      {/* [x] Check the implementation of each component, to see what props they require, if any! */}
+      <SearchBar />
+      <Posts likePost={likePost} posts={posts} />
     </div>
   );
 };
